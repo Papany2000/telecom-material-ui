@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { serverUrl } from '../Component/config'
+import { serverUrl } from '..//Config'
 
 
 export const getContracts = async function (organizationId) {

@@ -6,13 +6,21 @@ import { ErrorMessage } from '../ErrorMessage';
 import DataTable from '../DataTable';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArticleIcon from '@mui/icons-material/Article';
+import BasicModal from '../Modal';
+import Button from '@mui/material/Button';
+import OrganizationForm from '../Form/OrganizationForm';
+import { removeOrganization } from '../Api/ApiOrganization'
+import Greeting from '../Greetimg';
 
 function OrganizationPage () {
   const routeParams = useParams();
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
- 
   const [organizations, setOrganizations] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+ 
  
   useEffect(() => {
 
@@ -41,7 +49,7 @@ function OrganizationPage () {
     {  field: 'managerPersonalPhone', headerName: 'managerPersonalPhone', width: 170, align: 'center' },
     {  field: 'managerEmail', headerName: 'managerEmail', width: 190, align: 'center' },
     {  field: 'supportEmail', headerName: 'supportEmail', width: 190, align: 'center' },
-    {  field: 'supprotPhone', headerName: 'supporotPhone', width: 150, align: 'center' },
+    {  field: 'supportPhone', headerName: 'supportPhone', width: 120, align: 'center' },
     
     {
       field: "date",
@@ -52,7 +60,7 @@ function OrganizationPage () {
       renderCell: (params) => {
           return (
             <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-            <ArticleIcon index={params.row.id} />
+            <ArticleIcon index={params.row.id}  onClick={() => alert('ghbdtn')}/>
          </div>
           );
        }
@@ -66,7 +74,12 @@ function OrganizationPage () {
       renderCell: (params) => {
           return (
               <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-                  <DeleteForeverIcon index={params.row.id} />
+                  <DeleteForeverIcon index={params.row.id}    onClick = {async () => {
+                 const res =  window.confirm('Вы уверены')
+                 if(!res){return false}
+                  await removeOrganization(params.row.id)
+                  setOrganizations((await getOrganizations()).data)
+                }}/>
                </div>
           );
        }
@@ -74,10 +87,13 @@ function OrganizationPage () {
   ]
     return (
      <div>
+      <Greeting/>
        {loading && <Loader/>}
        {error && <ErrorMessage error={error}/>}
       <h3 style={{width: '100%', textAlign: 'center'}}>Список организаций-партнёров Телеком СП</h3>
-        <DataTable rows={rows} columns={columns}/>
+        <DataTable rows={rows} columns={columns}/> 
+        <Button onClick={handleOpen}>Open modal</Button>
+        <BasicModal open={open} handleClose={handleClose} text={'Создайте организацию'} children={<OrganizationForm setOrganizations={setOrganizations} handleClose={handleClose} />}/>
       </div>
      
     );
