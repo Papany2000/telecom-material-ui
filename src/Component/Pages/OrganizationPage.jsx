@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getOrganizations } from '../Api/ApiOrganization'
 import {Loader} from '../Loader'
 import { ErrorMessage } from '../ErrorMessage';
@@ -60,7 +60,11 @@ function OrganizationPage () {
       renderCell: (params) => {
           return (
             <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-            <ArticleIcon index={params.row.id}  onClick={() => alert('ghbdtn')}/>
+                  <span>
+            <Link to={`/contract/${params.row.id}`}>
+            <ArticleIcon index={params.row.id}/>
+            </Link>
+          </span>
          </div>
           );
        }

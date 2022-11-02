@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getContracts } from '../Api/ApiContract'
 import {Loader} from '../Loader'
 import { ErrorMessage } from '../ErrorMessage';
@@ -57,7 +57,11 @@ function ContractPage () {
       renderCell: (params) => {
           return (
             <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-            <ArticleIcon index={params.row.id}  onClick={() => alert('ghbdtn')}/>
+                   <span>
+            <Link to={`/orders/${params.row.id}`}>
+            <ArticleIcon index={params.row.id}/>
+            </Link>
+          </span>
          </div>
           );
        }
