@@ -16,9 +16,6 @@ const style = {
 };
 
 export default function BasicModal({handleClose, open, text, children}) {
- 
-  
-
   return (
     <div>
      
@@ -28,11 +25,11 @@ export default function BasicModal({handleClose, open, text, children}) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style}  style = {{borderRadius: '20px'}}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {text}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} component="span">
             {children}
           </Typography>
         </Box>
