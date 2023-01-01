@@ -1,23 +1,21 @@
-import axios from 'axios';
-import { serverUrl } from '../Config'
-
+import {axiosClient} from '../../App';
 
 export const getOrganizations = async function (page, limit) { 
     //throw new Error('это моя ошибка')
     if(page) {
-        return axios.get(serverUrl + '/organization' + `${page && '?page=' + page}` + `${limit && '&limit=' + limit || 10}`)
+        return axiosClient.get('/organization' + `${page && '?page=' + page}` + `${limit && '&limit=' + limit || 10}`)
     } else {
-        return axios.get(`${serverUrl}/organization`)
+        return axiosClient.get(`/organization`)
     } 
 }
 
 export const getOrganization = function (id) {
-    return axios.get(`${serverUrl}/organization/${id}`)
+    return axiosClient.get(`/organization/${id}`)
 }
 
-export const removeOrganization = async (id) => axios.delete(`${serverUrl}/organization/${id}`)
+export const removeOrganization = async (id) => axiosClient.delete(`/organization/${id}`)
 
 export const postOrganization = async (organization) => { 
-    return axios.post(`${serverUrl}/organization/create`, organization)
+    return axiosClient.post(`/organization/create`, organization)
 }
 

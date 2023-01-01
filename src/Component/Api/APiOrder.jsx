@@ -1,19 +1,17 @@
-import axios from 'axios';
-import { serverUrl } from '../Config'
-
+import {axiosClient} from '../../App';
 
 export const getOrders = async function (contractId) {
     if(contractId) {
-        return axios.get(serverUrl + '/orders' + `${contractId && '?contractId=' + contractId}`)
+        return axiosClient.get('/orders' + `${contractId && '?contractId=' + contractId}`)
     } else {
-        return axios.get(`${serverUrl}/orders`)
+        return axiosClient.get(`/orders`)
     } 
 }
 
 export const getOrder = function (id) {
-    return axios.get(`${serverUrl}/orders/${id}`)
+    return axiosClient.get(`/orders/${id}`)
 }
 
-export const removeOrder = async (id) => axios.delete(`${serverUrl}/orders/${id}`)
+export const removeOrder = async (id) => axiosClient.delete(`/orders/${id}`)
 
-export const postOrder = async (order) => axios.post(`${serverUrl}/orders/create`, order)
+export const postOrder = async (order) => axiosClient.post(`/orders/create`, order)

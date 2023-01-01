@@ -7,12 +7,18 @@ import Container from '@mui/material/Container';
 import { NavLink } from 'react-router-dom'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, DialogContentText } from '@mui/material';
 import { Controller, useForm, useFormState } from "react-hook-form";
-
+import { login } from './Api/ApiAuth';
+import { setAuthToken } from '../App';
 
 
 function Navigation() {
   const { handleSubmit, control } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async (data) => {
+    const res = await login(data);
+    localStorage.setItem('access_token', res.data.access_token);
+    await setAuthToken(res.data.access_token);
+    console.log('res', res)
+  }
   const { errors } = useFormState({
     control
   });
@@ -63,20 +69,20 @@ function Navigation() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <Controller
                     control={control}
-                    name="email"
+                    name="username"
                     rules={{ required: "обязательно к заполнению" }}
                     render={({ field }) => (
                       <TextField
                         autoFocus
                         margin='dense'
-                        name="email"
-                        label="Email Adress"
-                        type="email"
+                        name="username"
+                        label="user name"
+                        type="username"
                         fullWidth={true}
                         onChange={(e) => field.onChange(e)}
                         value={field.value}
-                        error={!!errors.email?.message}
-                        helperText={errors.email?.message}
+                        error={!!errors.username?.message}
+                        helperText={errors.username?.message}
                       />
                     )}
                   />

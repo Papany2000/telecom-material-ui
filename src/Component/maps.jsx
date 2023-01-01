@@ -35,7 +35,6 @@ const Maps = () => {
         setError(error.message)
       })
   }, [])
-  console.log(mapStates)
   const resultState = mapStates.map(el => ({
     id: el.id,
     modules: ['geoObject.addon.balloon', 'geoObject.addon.hint'],
@@ -45,9 +44,10 @@ const Maps = () => {
       balloonContentBody: el.text,
       hintContent: el.hit
     },
-    options: { preset: el.icon },
+    options: { preset: el.icon, id: el.id },
     key: el.id
   }))
+   
 
   return (
     <>
@@ -60,7 +60,9 @@ const Maps = () => {
           center: [53.21, 38.17],
           zoom: 3,
           controls: ['zoomControl', 'fullscreenControl']
-        }} modules={['control.ZoomControl', 'control.FullscreenControl', "templateLayoutFactory", "layout.ImageWithContent"]}>
+        }}
+         modules={['control.ZoomControl', 'control.FullscreenControl', "templateLayoutFactory", "layout.ImageWithContent"]}
+         >
           {resultState.map((el) => <Placemark  modules={[el.modules]} defaultGeometry={el.defaultGeometry} properties={el.properties} options={el.options} key={el.id} />)}
         </Map>
       </YMaps>
