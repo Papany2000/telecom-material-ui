@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArticleIcon from '@mui/icons-material/Article';
 import BasicModal from '../Modal';
 import Button from '@mui/material/Button';
-import ContractForm from '../Form/ContractForm';
+import ContractForm from '../Form/ContractForm.jsx';
 import { removeContract } from '../Api/ApiContract'
 import Greeting from '../Greetimg';
 

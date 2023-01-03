@@ -4,12 +4,8 @@ import { getContracts, postContract } from '../Api/ApiContract'
 import { Button, TextField } from '@mui/material';
 import Swal from 'sweetalert2'
 
-
 function ContractForm({ setContracts, handleClose }) {
-
-
   const {
-
     control,
     handleSubmit,
     formState: { errors },
@@ -62,7 +58,7 @@ function ContractForm({ setContracts, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.organizationId?.message}
               helperText={errors.organizationId?.message}
             />
@@ -81,7 +77,7 @@ function ContractForm({ setContracts, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.number?.message}
               helperText={errors.number?.message}
             />
@@ -100,7 +96,7 @@ function ContractForm({ setContracts, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.description?.message}
               helperText={errors.description?.message}
             />
@@ -119,7 +115,7 @@ function ContractForm({ setContracts, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.fileUuid?.message}
               helperText={errors.fileUuid?.message}
             />

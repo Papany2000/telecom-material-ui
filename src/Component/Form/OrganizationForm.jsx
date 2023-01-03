@@ -4,12 +4,8 @@ import { getOrganizations, postOrganization } from '../Api/ApiOrganization'
 import { Button, TextField } from '@mui/material';
 import Swal from 'sweetalert2'
 
-
 function OrganizationForm ({setOrganizations, handleClose}) {
-
-   
     const {
-     
         control,
         handleSubmit,
         formState: { errors },
@@ -62,7 +58,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                       type="phone"
                       fullWidth={true}
                       onChange={(e) => field.onChange(e)}
-                      value={field.value}
+                      value={field.value || ''}
                       error={!!errors.phone?.message}
                       helperText={errors.phone?.message}
                     />
@@ -81,7 +77,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                       type="name"
                       fullWidth={true}
                       onChange={(e) => field.onChange(e)}
-                      value={field.value}
+                      value={field.value || ''}
                       error={!!errors.name?.message}
                       helperText={errors.name?.message}
                     />
@@ -100,7 +96,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                       type="email"
                       fullWidth={true}
                       onChange={(e) => field.onChange(e)}
-                      value={field.value}
+                      value={field.value || ''}
                       error={!!errors.email?.message}
                       helperText={errors.email?.message}
                     />
@@ -119,7 +115,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="manager"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.manager?.message}
                      helperText={errors.manager?.message}
                     />
@@ -138,7 +134,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="managerWorkPhone"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.managerWorkPhone?.message}
                      helperText={errors.managerWorkPhone?.message}
                     />
@@ -157,7 +153,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="managerPersonalPhone"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.managerPersonalPhone?.message}
                      helperText={errors.managerPersonalPhone?.message}
                     />
@@ -176,7 +172,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="managerEmail"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.managerEmail?.message}
                      helperText={errors.managerEmail?.message}
                     />
@@ -195,7 +191,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="supportEmail"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.supportEmail?.message}
                      helperText={errors.supportEmail?.message}
                     />
@@ -214,7 +210,7 @@ function OrganizationForm ({setOrganizations, handleClose}) {
                     type="supportPhone"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.managerEmail?.message}
                      helperText={errors.managerEmail?.message}
                     />

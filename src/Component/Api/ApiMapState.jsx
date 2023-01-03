@@ -1,9 +1,9 @@
-import {axiosClient} from '../../App';
+import {axiosClient} from '../../utils/axiosClient';
 
 
 export const getMapStates = async function (mapStateId) {
     if(mapStateId) {
-        return axiosClient.get('/mapState' + `${mapStateId && '?mapStateId=' + mapStateId}`)
+        return axiosClient.get(`/mapState${mapStateId && '?mapStateId=' + mapStateId}`)
     } else {
         return axiosClient.get(`/mapState`)
     } 

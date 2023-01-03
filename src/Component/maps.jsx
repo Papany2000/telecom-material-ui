@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { useParams } from 'react-router-dom';
 import { getMapStates } from './Api/ApiMapState';
 import { Loader } from './Loader';
@@ -7,8 +7,6 @@ import { ErrorMessage } from './ErrorMessage';
 import BasicModal from './Modal';
 import Button from '@mui/material/Button';
 import MapStateForm from './Form/mapStateForm'
-
-
 
 const Maps = () => {
 
@@ -34,7 +32,7 @@ const Maps = () => {
         setLoading(false)
         setError(error.message)
       })
-  }, [])
+  }, [routeParams])
   const resultState = mapStates.map(el => ({
     id: el.id,
     modules: ['geoObject.addon.balloon', 'geoObject.addon.hint'],

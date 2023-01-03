@@ -62,7 +62,7 @@ function OrderForm({ setOrders, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.contractId?.message}
               helperText={errors.contractId?.message}
             />
@@ -81,7 +81,7 @@ function OrderForm({ setOrders, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.number?.message}
               helperText={errors.number?.message}
             />
@@ -100,7 +100,7 @@ function OrderForm({ setOrders, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.description?.message}
               helperText={errors.description?.message}
             />
@@ -119,7 +119,7 @@ function OrderForm({ setOrders, handleClose }) {
               type="text"
               fullWidth={true}
               onChange={(e) => field.onChange(e)}
-              value={field.value}
+              value={field.value || ''}
               error={!!errors.type?.message}
               helperText={errors.type?.message}
             />
@@ -138,7 +138,7 @@ function OrderForm({ setOrders, handleClose }) {
                     type="supportEmail"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.supportEmail?.message}
                      helperText={errors.supportEmail?.message}
                     />
@@ -157,7 +157,7 @@ function OrderForm({ setOrders, handleClose }) {
                     type="text"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.supportPhone?.message}
                      helperText={errors.supportPhone?.message}
                     />
@@ -176,7 +176,7 @@ function OrderForm({ setOrders, handleClose }) {
                     type="text"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}
-                     value={field.value}
+                     value={field.value || ''}
                      error={!!errors.supportEmailTemplate?.message}
                      helperText={errors.supportEmailTemplate?.message}
                     />

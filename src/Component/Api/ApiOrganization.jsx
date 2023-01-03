@@ -1,12 +1,12 @@
-import {axiosClient} from '../../App';
+import { axiosClient } from '../../utils/axiosClient';
 
-export const getOrganizations = async function (page, limit) { 
+export const getOrganizations = async function (page, limit) {
     //throw new Error('это моя ошибка')
-    if(page) {
-        return axiosClient.get('/organization' + `${page && '?page=' + page}` + `${limit && '&limit=' + limit || 10}`)
+    if (page) {
+        return axiosClient.get(`/organization${page && '?page=' + page}${limit && '&limit=' + (limit || 10)}`)
     } else {
         return axiosClient.get(`/organization`)
-    } 
+    }
 }
 
 export const getOrganization = function (id) {
@@ -15,7 +15,7 @@ export const getOrganization = function (id) {
 
 export const removeOrganization = async (id) => axiosClient.delete(`/organization/${id}`)
 
-export const postOrganization = async (organization) => { 
+export const postOrganization = async (organization) => {
     return axiosClient.post(`/organization/create`, organization)
 }
 
