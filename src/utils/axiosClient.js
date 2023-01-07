@@ -6,6 +6,7 @@ export const axiosClient = axios.create(defaultAxiosOptions);
 axiosClient.interceptors.response.use(function (response) {
   // Do something with response data
   return response;
+  
 }, function (error) {
   if (error.response.data.statusCode === 401) {
     return window.location.href = '/login'
@@ -20,5 +21,6 @@ export function setAuthToken(token) {
   if (token) {
     axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
     console.log('axios.defaults.headers', axiosClient.defaults.headers);
+    
   }
 }

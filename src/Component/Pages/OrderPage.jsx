@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import BasicModal from '../Modal';
 import Button from '@mui/material/Button';
 import OrderForm from '../Form/OrderForm';
-import Greeting from '../Greetimg';
+
 
 
 
@@ -71,12 +71,12 @@ function OrderPage () {
   ]
     return (
      <div>
-      <Greeting/>
+   <Button onClick={handleOpen}>Добавить заказ</Button>
        {loading && <Loader/>}
        {error && <ErrorMessage error={error}/>}
       <h3 style={{width: '100%', textAlign: 'center'}}>Список заказовТелеком СП</h3>
         <DataTable rows={rows} columns={columns}/> 
-        <Button onClick={handleOpen}>Open modal</Button>
+       
         <BasicModal open={open} handleClose={handleClose} text={'Создайте организацию'} children={<OrderForm setOrders={setOrders} handleClose={handleClose} />}/>
       </div>
      

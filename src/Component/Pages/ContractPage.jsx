@@ -10,7 +10,7 @@ import BasicModal from '../Modal';
 import Button from '@mui/material/Button';
 import ContractForm from '../Form/ContractForm.jsx';
 import { removeContract } from '../Api/ApiContract'
-import Greeting from '../Greetimg';
+
 
 
 
@@ -88,12 +88,12 @@ function ContractPage () {
   ]
     return (
      <div>
-      <Greeting/>
+     <Button onClick={handleOpen}>Добавить договор</Button>
        {loading && <Loader/>}
        {error && <ErrorMessage error={error}/>}
       <h3 style={{width: '100%', textAlign: 'center'}}>Список договоров с организациями-партнёрами Телеком СП</h3>
         <DataTable rows={rows} columns={columns}/> 
-        <Button onClick={handleOpen}>Open modal</Button>
+        
         <BasicModal open={open} handleClose={handleClose} text={'Создайте организацию'} children={<ContractForm setContracts={setContracts} handleClose={handleClose} />}/>
       </div>
      

@@ -11,27 +11,22 @@ function RegistrationForm() {
     const res = await login(data);
     localStorage.setItem('access_token', res.data.access_token);
     await setAuthToken(res.data.access_token);
-    console.log('res', res)
+    window.location.href = '/'
   }
   const { errors } = useFormState({
     control
   });
 
  
-  const logout = () => {
-    const res = window.confirm('Вы уверены')
-    if (!res) { return false }
-    localStorage.setItem('access_token', '');
-    setAuthToken('')
-  }
+
 
   return (
 
     <div style={{display: 'flex', justifyContent: 'space-evenly',}}>
      
        
-        <Box mr={3} style={{width: '50%', borderRight: '25%',}}>
-        {(localStorage.getItem('access_token')) ? <Button color='inherit' variant='outlined' onClick={logout}>Logout</Button> : <Button color='inherit' variant='outlined'>Log in</Button>}
+        <Box mr={3} style={{width: '50%', borderRight: '25%', marginBottom: '10%'}}>
+      
             <form onSubmit={handleSubmit(onSubmit)} style={{borderRight: '25%'}}>
               <Controller
                 control={control}
@@ -39,6 +34,7 @@ function RegistrationForm() {
                 rules={{ required: "обязательно к заполнению" }}
                 render={({ field }) => (
                   <TextField
+                  style={{marginTop: '10%'}}
                     autoFocus
                     margin='dense'
                     name="username"
@@ -61,7 +57,7 @@ function RegistrationForm() {
                     autoFocus
                     margin='dense'
                     name="password"
-                    label="пороль"
+                    label="пароль"
                     type="password"
                     fullWidth={true}
                     onChange={(e) => field.onChange(e)}

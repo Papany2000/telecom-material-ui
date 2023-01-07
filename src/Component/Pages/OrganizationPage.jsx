@@ -10,7 +10,7 @@ import BasicModal from '../Modal';
 import Button from '@mui/material/Button';
 import OrganizationForm from '../Form/OrganizationForm';
 import { removeOrganization } from '../Api/ApiOrganization'
-import Greeting from '../Greetimg';
+
 
 function OrganizationPage () {
   const routeParams = useParams();
@@ -91,12 +91,11 @@ function OrganizationPage () {
   ]
     return (
      <div>
-      <Greeting/>
+      <Button onClick={handleOpen}>Добавить организацию</Button>
        {loading && <Loader/>}
        {error && <ErrorMessage error={error}/>}
       <h3 style={{width: '100%', textAlign: 'center'}}>Список организаций-партнёров Телеком СП</h3>
-        <DataTable rows={rows} columns={columns}/> 
-        <Button onClick={handleOpen}>Open modal</Button>
+        <DataTable rows={rows} columns={columns}/>  
         <BasicModal open={open} handleClose={handleClose} text={'Создайте организацию'} children={<OrganizationForm setOrganizations={setOrganizations} handleClose={handleClose} />}/>
       </div>
      

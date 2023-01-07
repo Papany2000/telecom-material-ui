@@ -5,10 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { NavLink } from 'react-router-dom'
+import { Button} from '@mui/material';
+import { setAuthToken } from '../utils/axiosClient';
 
 function Navigation() {
  
- 
+
+  const logout = () => {
+    const res = window.confirm('Вы уверены')
+    if (!res) { return false }
+    localStorage.setItem('access_token', '');
+    setAuthToken('')
+    window.location.href = '/login'
+  }
 
   return (
     <AppBar position="static">
@@ -38,7 +47,7 @@ function Navigation() {
             <Typography><NavLink to="/contract" style={{ color: 'inherit', textDecoration: 'none' }}>Договора</NavLink></Typography>
             <Typography><NavLink to="/order" style={{ color: 'inherit', textDecoration: 'none' }}>Заказы</NavLink></Typography>
             <Typography><NavLink to="/maps" style={{ color: 'inherit', textDecoration: 'none' }}>Карта</NavLink></Typography>
-            <Typography><NavLink to="/login" style={{ color: 'inherit', textDecoration: 'none' }}>Войти</NavLink></Typography>
+            <Typography><NavLink to="/login" style={{ color: 'inherit', textDecoration: 'none' }}>{localStorage.getItem('access_token') ? <Button color='inherit' variant='outlined' onClick={logout}>Logout</Button> : <Button color='inherit' variant='outlined'>Log in</Button>}</NavLink></Typography>
           </Box>
 
          

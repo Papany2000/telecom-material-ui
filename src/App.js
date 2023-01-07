@@ -7,9 +7,12 @@ import RegistrationForm from './Component/Form/RegistrationForm';
 import Maps from './Component/maps';
 import { setAuthToken } from './utils/axiosClient';
 
-setAuthToken(localStorage.getItem('access_token'));
+
 
 function App() {
+  
+  setAuthToken(localStorage.getItem('access_token'));
+
   return (
     <>
       <Navigation />
