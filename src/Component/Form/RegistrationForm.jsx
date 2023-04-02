@@ -6,12 +6,13 @@ import React from 'react';
 import Box from '@mui/material/Box';
 
 function RegistrationForm() {
+ 
   const { handleSubmit, control } = useForm()
   const onSubmit = async (data) => {
     const res = await login(data);
     localStorage.setItem('access_token', res.data.access_token);
     await setAuthToken(res.data.access_token);
-    window.location.href = '/'
+    window.location = '/'
   }
   const { errors } = useFormState({
     control
