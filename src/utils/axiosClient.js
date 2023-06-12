@@ -15,8 +15,8 @@ axiosClient.interceptors.response.use(function (response) {
 });
 
 export function setAuthToken(token) {
-  axiosClient.defaults.headers.common.Authorization = '';
-  delete axiosClient.defaults.headers.common.Authorization;
+ // axiosClient.defaults.headers.common.Authorization = '';
+ // delete axiosClient.defaults.headers.common.Authorization;
 
   if (token) {
     axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
