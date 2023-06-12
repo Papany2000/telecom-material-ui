@@ -4,7 +4,7 @@ import { Button, Input } from '@mui/material';
 import {axiosClient} from '../../utils/axiosClient';
 import {useNavigate} from 'react-router-dom';
 
-function FileUploadForm() {
+function FileExselContractForm() {
   const [file, setFile] = useState(null);
   const navigate = useNavigate()
   const handleFileChange = (event) => {
@@ -16,12 +16,12 @@ function FileUploadForm() {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await axiosClient.post('/parse-excel-order', formData, {
+      const response = await axiosClient.post('/parse-excel-contract', formData, {
   headers: {
     "Content-Type": "multipart/form-data",
   }}); 
       if (response.data) {
-        navigate('/order')
+        navigate('/contract')
      }
    
     } catch (error) {
@@ -41,4 +41,4 @@ function FileUploadForm() {
   );
 }
 
-export default FileUploadForm; 
+export default FileExselContractForm; 

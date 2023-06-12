@@ -20,7 +20,7 @@ export function setAuthToken(token) {
 
   if (token) {
     axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
-    console.log('axios.defaults.headers', axiosClient.defaults.headers);
+    // console.log('axios.defaults.headers', axiosClient.defaults.headers);
     
   }
 }

@@ -76,7 +76,6 @@ function OrderPage () {
        {error && <ErrorMessage error={error}/>}
       <h3 style={{width: '100%', textAlign: 'center'}}>Список заказовТелеком СП</h3>
         <DataTable rows={rows} columns={columns}/> 
-       
         <BasicModal open={open} handleClose={handleClose} text={'Создайте организацию'} children={<OrderForm setOrders={setOrders} handleClose={handleClose} />}/>
       </div>
      

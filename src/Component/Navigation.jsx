@@ -47,7 +47,7 @@ function Navigation() {
             <Typography><NavLink to="/contract" style={{ color: 'inherit', textDecoration: 'none' }}>Договора</NavLink></Typography>
             <Typography><NavLink to="/order" style={{ color: 'inherit', textDecoration: 'none' }}>Заказы</NavLink></Typography>
             <Typography><NavLink to="/maps" style={{ color: 'inherit', textDecoration: 'none' }}>Карта</NavLink></Typography>
-            <Typography><NavLink to="exsel" style={{ color: 'inherit', textDecoration: 'none' }} >Exsel</NavLink></Typography>
+           
             <Typography><NavLink to="/login" style={{ color: 'inherit', textDecoration: 'none' }}>{localStorage.getItem('access_token') ? <Button color='inherit' variant='outlined' onClick={logout}>Logout</Button> : <Button color='inherit' variant='outlined'>Log in</Button>}</NavLink></Typography>
           </Box>
 
